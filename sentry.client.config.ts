@@ -20,10 +20,10 @@ if (
     debug: false,
     initialScope: {
       extra: {
-        hardwareConcurrency: navigator.hardwareConcurrency,
+        hardwareConcurrency: typeof window !== undefined ? navigator.hardwareConcurrency : 0,
         deviceMemory:
-          "deviceMemory" in navigator &&
-          typeof navigator.deviceMemory === "number"
+          typeof window !== undefined && "deviceMemory" in navigator &&
+            typeof navigator.deviceMemory === "number"
             ? navigator.deviceMemory
             : "unknown",
       },
